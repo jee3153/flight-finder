@@ -8,6 +8,10 @@ app = FastAPI()
 FLIGHT_DATA = "US:UK:Delta:500,UK:FR:JetBlue:100,FR:DE:Lufthansa:90,US:DE:AirFrance:950"
 flight_finder = FlightFinder(FLIGHT_DATA)
 
+@app.get('/')
+async def read_root():
+    return "Search your next holiday!"
+
 @app.get('/cheapest-flight')
 async def get_cheapest_flight(
     from_: Annotated[str, Query(..., alias="from")], 
