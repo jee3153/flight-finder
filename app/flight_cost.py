@@ -46,7 +46,7 @@ class FlightFinder:
 
     def find_all_flights(self, source: str, destination: str, max_cost: float, max_stops: float) -> tuple[int, str]:  
         visited = {}
-        
+
         # (current cost, current stops, source, destination)
         queue: tuple[int, str, str] = [(0, 0, source, source)]
         heapq.heapify(queue)
@@ -68,7 +68,7 @@ class FlightFinder:
         return flights
 
     def add_new_edge(self, flight):
-        self.flights_str += f",{flight["source"]}:{flight["destination"]}:{flight["airline"]}:{flight["cost"]}"
+        self.flights_str += f",{flight['source']}:{flight['destination']}:{flight['airline']}:{flight['cost']}"
         self.flight_graph[flight["source"]].append((int(flight["cost"]), flight["destination"]))
 
     def direct_flights_from(self, source: str):
